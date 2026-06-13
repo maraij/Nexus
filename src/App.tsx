@@ -27,16 +27,18 @@ import { SettingsPage } from './pages/settings/SettingsPage';
 import { HelpPage } from './pages/help/HelpPage';
 import { DealsPage } from './pages/deals/DealsPage';
 
+import Calendar from "./pages/Calendar";
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
-
-import Calendar from "./pages/Calendar";
 
 function App() {
   return (
     <AuthProvider>
-      <Router  basename="/Nexus">
+      <Router>
         <Routes>
+          <Route path="/calendar" element={<DashboardLayout />}>
+  <Route index element={<Calendar />} />
+</Route>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -97,11 +99,6 @@ function App() {
           
           {/* Catch all other routes and redirect to login */}
           <Route path="*" element={<Navigate to="/login" replace />} />
-
-          {/* Calendar Route */}
-<Route path="/calendar" element={<DashboardLayout />}>
-  <Route index element={<Calendar />} />
-</Route>
         </Routes>
       </Router>
     </AuthProvider>

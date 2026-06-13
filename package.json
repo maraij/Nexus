@@ -1,15 +1,14 @@
 {
   "name": "business-nexus",
-  "homepage": "https://maraij.github.io/Nexus",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
