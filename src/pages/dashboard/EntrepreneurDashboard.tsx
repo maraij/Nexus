@@ -10,12 +10,19 @@ import { useAuth } from '../../context/AuthContext';
 import { CollaborationRequest } from '../../types';
 import { getRequestsForEntrepreneur } from '../../data/collaborationRequests';
 import { investors } from '../../data/users';
+import { getData } from "../../utils/meetingStorage";
+
+
 
 export const EntrepreneurDashboard: React.FC = () => {
   const { user } = useAuth();
   const [collaborationRequests, setCollaborationRequests] = useState<CollaborationRequest[]>([]);
   const [recommendedInvestors, setRecommendedInvestors] = useState(investors.slice(0, 3));
   
+  const data = getData();
+
+const confirmed = data.requests.filter(r => r.status === "accepted");
+
   useEffect(() => {
     if (user) {
       // Load collaboration requests
@@ -55,6 +62,37 @@ export const EntrepreneurDashboard: React.FC = () => {
       
       {/* Summary cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+       <Card>
+  <CardHeader>
+    <h2 className="text-lg font-medium text-gray-900">
+       Confirmed Meetings
+    </h2>
+  </CardHeader>
+
+  <CardBody>
+    {confirmed.length === 0 ? (
+      <p className="text-gray-500">No confirmed meetings yet</p>
+    ) : (
+      <div className="space-y-3">
+        {confirmed.map((meeting) => (
+          <div
+            key={meeting.id}
+            className="border p-3 rounded-md bg-green-50"
+          >
+            <p className="font-semibold">{meeting.title}</p>
+            <p className="text-sm text-gray-600">
+               {meeting.date}
+            </p>
+
+            <span className="text-xs text-green-700 font-medium">
+               Confirmed
+            </span>
+          </div>
+        ))}
+      </div>
+    )}
+  </CardBody>
+</Card>
         <Card className="bg-primary-50 border border-primary-100">
           <CardBody>
             <div className="flex items-center">

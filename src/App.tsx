@@ -30,6 +30,8 @@ import { DealsPage } from './pages/deals/DealsPage';
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
 
+import Calendar from "./pages/Calendar";
+
 function App() {
   return (
     <AuthProvider>
@@ -95,6 +97,11 @@ function App() {
           
           {/* Catch all other routes and redirect to login */}
           <Route path="*" element={<Navigate to="/login" replace />} />
+
+          {/* Calendar Route */}
+<Route path="/calendar" element={<DashboardLayout />}>
+  <Route index element={<Calendar />} />
+</Route>
         </Routes>
       </Router>
     </AuthProvider>
