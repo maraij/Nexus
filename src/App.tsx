@@ -35,7 +35,7 @@ import Calendar from "./pages/Calendar";
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router  basename="/Nexus">
         <Routes>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
