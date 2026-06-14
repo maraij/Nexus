@@ -3,8 +3,8 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-import { getData, saveData } from "../utils/meetingStorage";
-import { MeetingState } from "../utils/meetingTypes";
+import { getData, saveData } from "../../utils/meetingStorage";
+import { MeetingState } from "../../utils/meetingTypes";
 
 export default function Calendar() {
   const [data, setData] = useState<MeetingState>(getData());

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import VideoCallPage from "./pages/Videocall/videocallpage";
+import VideoCallPage from "./pages/Week2/Videocall/videocallpage";
 
 // Layouts
 import { DashboardLayout } from './components/layout/DashboardLayout';
@@ -23,12 +23,12 @@ import { InvestorsPage } from './pages/investors/InvestorsPage';
 import { EntrepreneursPage } from './pages/entrepreneurs/EntrepreneursPage';
 import { MessagesPage } from './pages/messages/MessagesPage';
 import { NotificationsPage } from './pages/notifications/NotificationsPage';
-import { DocumentsPage } from './pages/documents/DocumentsPage';
+import { DocumentsPage } from './pages/Week2/documents/DocumentsPage';
 import { SettingsPage } from './pages/settings/SettingsPage';
 import { HelpPage } from './pages/help/HelpPage';
 import { DealsPage } from './pages/deals/DealsPage';
 
-import Calendar from "./pages/Calendar";
+import Calendar from "./pages/Week1/Calendar";
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
 
@@ -38,7 +38,7 @@ function App() {
       <Router  basename="/Nexus">
         <Routes>
      
-         <Route path="video-call" element={<VideoCallPage />} />
+         <Route path="/video-call" element={<VideoCallPage />} />
 
          
           <Route path="/calendar" element={<DashboardLayout />}>

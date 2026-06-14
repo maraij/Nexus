@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { Video } from "lucide-react";
 import { 
   Home, Building2, CircleDollarSign, Users, MessageCircle, 
   Bell, FileText, Settings, HelpCircle,
@@ -45,6 +46,7 @@ export const Sidebar: React.FC = () => {
     { to: '/notifications', icon: <Bell size={20} />, text: 'Notifications' },
     { to: '/documents', icon: <FileText size={20} />, text: 'Documents' },
     { to: '/calendar', icon: <Calendar size={20} />, text: 'Calendar' },
+     { to: '/video-call', icon: <Video size={20} />, text: 'Video Call' },
   ];
   
   const investorItems = [
@@ -55,6 +57,8 @@ export const Sidebar: React.FC = () => {
     { to: '/notifications', icon: <Bell size={20} />, text: 'Notifications' },
     { to: '/deals', icon: <FileText size={20} />, text: 'Deals' },
     { to: '/calendar', icon: <Calendar size={20} />, text: 'Calendar' },
+     { to: '/video-call', icon: <Video size={20} />, text: 'Video Call' },
+
   ];
   
   const sidebarItems = user.role === 'entrepreneur' ? entrepreneurItems : investorItems;
