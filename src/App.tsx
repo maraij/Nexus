@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import VideoCallPage from "./pages/Videocall/videocallpage";
 
 // Layouts
 import { DashboardLayout } from './components/layout/DashboardLayout';
@@ -34,8 +35,12 @@ import { ChatPage } from './pages/chat/ChatPage';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router  basename="/Nexus">
         <Routes>
+     
+         <Route path="video-call" element={<VideoCallPage />} />
+
+         
           <Route path="/calendar" element={<DashboardLayout />}>
   <Route index element={<Calendar />} />
 </Route>
