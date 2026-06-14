@@ -35,7 +35,7 @@ import { ChatPage } from './pages/chat/ChatPage';
 function App() {
   return (
     <AuthProvider>
-      <Router  basename="/Nexus">
+      <Router>
         <Routes>
      
          <Route path="/video-call" element={<VideoCallPage />} />
