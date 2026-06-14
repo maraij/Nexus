@@ -8,6 +8,7 @@ import {
   Calendar
 } from 'lucide-react';
 
+
 interface SidebarItemProps {
   to: string;
   icon: React.ReactNode;
@@ -47,6 +48,7 @@ export const Sidebar: React.FC = () => {
     { to: '/documents', icon: <FileText size={20} />, text: 'Documents' },
     { to: '/calendar', icon: <Calendar size={20} />, text: 'Calendar' },
      { to: '/video-call', icon: <Video size={20} />, text: 'Video Call' },
+     { to: '/wallet', icon: <CircleDollarSign size={20} />, text: 'Wallet' },
   ];
   
   const investorItems = [
@@ -58,6 +60,7 @@ export const Sidebar: React.FC = () => {
     { to: '/deals', icon: <FileText size={20} />, text: 'Deals' },
     { to: '/calendar', icon: <Calendar size={20} />, text: 'Calendar' },
      { to: '/video-call', icon: <Video size={20} />, text: 'Video Call' },
+     { to: '/wallet', icon: <CircleDollarSign size={20} />, text: 'Wallet' },
 
   ];
   

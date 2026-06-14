@@ -32,18 +32,49 @@ import Calendar from "./pages/Week1/Calendar";
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
 
+import { WalletProvider } from "./context/WalletContext";
+import WalletPage from './pages/Week3/WalletPage';
+
+import { useAuth } from './context/AuthContext';
+const OTPProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, otpRequired } = useAuth();
+
+  if (!user) return <Navigate to="/login" replace />;
+  if (otpRequired) return <Navigate to="/login" replace />;
+
+  return <>{children}</>;
+};
+
 function App() {
   return (
     <AuthProvider>
+       <WalletProvider>
       <Router>
         <Routes>
-     
-         <Route path="/video-call" element={<VideoCallPage />} />
-
-         
-          <Route path="/calendar" element={<DashboardLayout />}>
-  <Route index element={<Calendar />} />
+            <Route
+  path="/dashboard"
+  element={
+    <OTPProtectedRoute>
+      <DashboardLayout />
+    </OTPProtectedRoute>
+  }
+>
+  <Route path="entrepreneur" element={<EntrepreneurDashboard />} />
+  <Route path="investor" element={<InvestorDashboard />} />
 </Route>
+     
+        <Route path="/video-call" element={<DashboardLayout />}>
+  <Route index element={<VideoCallPage />} />
+</Route>
+
+        <Route path="/wallet" element={<DashboardLayout />}>
+  <Route index element={<WalletPage />} />
+</Route>
+
+
+          <Route path="/calendar" element={<DashboardLayout />}>
+           <Route index element={<Calendar />} />
+          </Route>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -106,6 +137,7 @@ function App() {
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
+      </WalletProvider>
     </AuthProvider>
   );
 }
